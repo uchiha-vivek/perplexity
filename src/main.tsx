@@ -6,7 +6,8 @@ import { GoogleOAuthProvider } from '@react-oauth/google'
 
 import './utils/fontawesome.ts';
 
-const googleClientID = ""
+const googleClientID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <GoogleOAuthProvider clientId={googleClientID}>
