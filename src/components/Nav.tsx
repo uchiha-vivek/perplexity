@@ -33,12 +33,12 @@ export const Nav = () => {
                     </header>
                     <ul className="space-y-2">
                         <li><Button background={false} onClick={() => navigate("/")} icon={["fas", "magnifying-glass"]} label="Home" /></li>
-                        <li><Button background={false} onClick={() => navigate("/library")} icon={["fas", "book"]} label="Library" /></li>
+                        <li><Button background={false} onClick={() => navigate("/")} icon={["fas", "book"]} label="Library" /></li>
                         <li><Button background={false} icon={["fas", "circle-nodes"]} label="AI Profile" /></li>
                     </ul>
                 </nav>
 
-                {/* Profile & Footer */}
+                
                 <div className="space-y-4">
                     <div className="p-4 rounded-md bg-orange-100">
                         <span className="font-bold">Try Lirra Pro</span>
