@@ -11,14 +11,14 @@ export const ProfileSetup: FC<React.PropsWithChildren<ProfileSetupProps>> = ({ c
     if (!isOpen) return null;
 
     return (<div className={`relative z-10`} aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        {/* Background Overlay */}
+        
         <div className="fixed inset-0 bg-gray-600 bg-opacity-75 transition-opacity duration-300 ease-in-out"></div>
 
         <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
             <div className="mx-auto w-[50%]">
-                {/* Modal */}
+                 
                 <div className="relative transform transition-transform duration-500 ease-out translate-y-full sm:translate-y-1/2 overflow-hidden rounded-lg bg-white text-left shadow-xl">
-                    {/* <div className="border-b border-stroke py-4 px-7 dark:border-strokedark"> */}
+                    
                     <div>
                         <div className="w-full flex p-4 justify-between">
                             <div className="flex flex-col justify-center items-center p-2 space-y-2">

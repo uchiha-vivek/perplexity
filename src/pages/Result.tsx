@@ -14,7 +14,7 @@ function generateUUID() {
 const Loader = () => {
     return (<div className="flex flex-col items-center h-50 justify-center space-y-2">
         <div className="animate-spin rounded-full h-20 w-20 border-b-2 border-gray-900"></div>
-        {/* <span className="text-gray-500">Loading...</span> */}
+       
     </div>)
 }
 
@@ -124,7 +124,7 @@ export const Result = () => {
                     </div>
                 </div>
             </div>
-            {/* <div className="items-center bottom-20 p-20 fixed w-[55%]"> */}
+          
             <div className="bg-gray-200 items-center bottom-20 fixed w-[35%] p-1 rounded-full">
                 <div className="flex bg-white items-center justify-between rounded-full w-full p-2 border hover:border-teal-500 transition duration-300 ease-in-out border-gray-300">
                     <input placeholder="Ask Follow-up..." className="w-full p-1 h-full border-none outline-none resize-none" />
@@ -134,7 +134,7 @@ export const Result = () => {
                     </div>
                 </div>
             </div>
-            {/* </div> */}
+          
         </section>
     )
 }
