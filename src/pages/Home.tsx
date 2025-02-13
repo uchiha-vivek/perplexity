@@ -16,20 +16,25 @@ export const Home = () => {
     const navigate = useNavigate();
 
     return (
-        <section className="m-auto max-w-screen-md px-4">
-            <div className="flex flex-col items-center space-y-6 py-16">
+        <section className="w-full max-w-screen-md mx-auto px-4">
+            <div className="flex flex-col items-center space-y-6 py-12">
                 <header>
-                    <span className="font-bold font-mono text-4xl text-orange-400"> Ask Lirra? </span>
+                    <span className="font-bold font-mono text-3xl sm:text-4xl text-orange-400"> Ask Lirra? </span>
                 </header>
                 <Search />
                 <span className="text-orange-600 font-medium">Try asking</span>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-orange-600 w-full">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 w-full">
                     {queries.map((query, i) => (
-                        <Button key={i} background={false} onClick={() => navigate(`/result?query=${query}`)} label={query} />
+                        <Button 
+                            key={i} 
+                            background={false} 
+                            onClick={() => navigate(`/result?query=${query}`)} 
+                            label={query} 
+                        />
                     ))}
                 </div>
             </div>
-            <div className="flex flex-wrap justify-center space-x-4 space-y-2 text-center">
+            <div className="flex flex-wrap justify-center gap-3 text-center py-4">
                 {["Try Pro", "Careers", "FAQ", "Labs", "Blog", "Privacy", "Terms"].map((link, i) => (
                     <a key={i} className="text-orange-600 hover:underline font-semibold" href="#">
                         {link}

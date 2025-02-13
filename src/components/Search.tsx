@@ -1,55 +1,56 @@
 import { useContext, useEffect, useRef } from "react";
-import { Button } from "./Button"
+import { Button } from "./Button";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../App";
 
 export const Search = () => {
-
     const inputRef = useRef<HTMLTextAreaElement>(null);
     const navigate = useNavigate();
-
     const { setShowModal } = useContext(AppContext);
 
-    // listen enter event
     useEffect(() => {
-
-        if (inputRef.current == null) return;
-
+        if (!inputRef.current) return;
         const input = inputRef.current;
 
-        input.addEventListener("keydown", (e) => {
-            if (e.key == "Enter" && input.value != "") {
-                navigate(`/result?query=${input.value}`)
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "Enter" && input.value.trim() !== "") {
+                navigate(`/result?query=${input.value.trim()}`);
                 setShowModal(false);
             }
-        })
+        };
 
-        return () => input?.removeEventListener("keydown", () => { })
+        input.addEventListener("keydown", handleKeyDown);
+        return () => input.removeEventListener("keydown", handleKeyDown);
+    }, [navigate, setShowModal]);
 
-    }, [inputRef])
-
-    return (<div className="flex flex-col justify-start rounded-md h-full w-full p-2 border hover:border-teal-500 transition duration-300 ease-in-out border-gray-300">
-        <div className="flex">
-            <textarea ref={inputRef} placeholder="Ask anything..." className="w-full h-full border-none outline-none resize-none" />
-        </div>
-        <div className="flex justify-between">
-            <div className="flex space-x-2 p-2">
-                <div className="flex space-x-2 p-2">
+    return (
+        <div className="w-full p-3 border rounded-md hover:border-teal-500 transition duration-300 border-gray-300">
+            <div className="flex">
+                <textarea
+                    ref={inputRef}
+                    placeholder="Ask anything..."
+                    className="w-full h-10 border-none outline-none resize-none p-2"
+                />
+            </div>
+            <div className="flex flex-wrap justify-between items-center mt-3 space-y-2 md:space-y-0">
+                <div className="flex space-x-2">
                     <Button label="Focus" icon={["fas", "magnifying-glass"]} rounded="-xl" />
                     <Button label="File" icon={["fas", "circle-plus"]} rounded="-xl" />
                     <Button label="🌍 Globe" rounded="-xl" />
                     <Button label="📥 Insert" rounded="-xl" />
                 </div>
-
-            </div>
-
-            <div className="flex space-x-2 p-25">
-                <button>Copilot</button>
-                <Button onClick={() => {
-                    if (inputRef.current?.value != "")
-                        navigate(`/result?query=${inputRef.current?.value}`)
-                }} icon={["fas", "arrow-right"]} rounded="-xl" />
+                <div className="flex space-x-2">
+                    <button className="text-gray-700 font-semibold">Copilot</button>
+                    <Button
+                        onClick={() => {
+                            if (inputRef.current?.value.trim() !== "")
+                                navigate(`/result?query=${inputRef.current?.value.trim()}`);
+                        }}
+                        icon={["fas", "arrow-right"]}
+                        rounded="-xl"
+                    />
+                </div>
             </div>
         </div>
-    </div>)
-}
+    );
+};
